@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this code or work, please cite it as below."
+authors:
+  - family-names: "Gao"
+    given-names: "Shuo"
+  - family-names: "Zheng"
+    given-names: "Chenhao"
+  - family-names: "Ren"
+    given-names: "Zhongzheng"
+title: "Elephant in the Fridge: Constant-Memory Frame Packing for Long Video Understanding"
+preferred-citation:
+  type: conference-paper
+  authors:
+    - family-names: "Gao"
+      given-names: "Shuo"
+    - family-names: "Zheng"
+      given-names: "Chenhao"
+    - family-names: "Ren"
+      given-names: "Zhongzheng"
+  title: "Elephant in the Fridge: Constant-Memory Frame Packing for Long Video Understanding"
+  collection-title: "Neural Information Processing Systems (NeurIPS)"
+  year: 2026
