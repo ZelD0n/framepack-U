@@ -25,7 +25,6 @@
 
 ## 📑 Contents
 
-- [TODOs](#-todos)
 - [News](#-news)
 - [Preparation](#-preparation)
   - [Environment](#environment)
@@ -41,18 +40,9 @@
 - [License](#-license)
 - [Citation](#-citation)
 
-## 📋 TODOs
-- [x] Upload the offline storage
-- [x] Update the requirements
-- [x] Revise the README.md
-- [x] Fix extract code
-- [ ] Online end-to-end code
-- [x] Optional verbose mode
-- [x] Cleanup the code for release
-
-
 ## 📰 News
-- [2026/9/25] 🎉 Our paper has been accepted by **NeurIPS 2026**!
+- [2026/10/12] 📦 Our paper, code, and supporting materials are now available!
+- [2026/09/25] 🎉 Our paper has been accepted to **NeurIPS 2026**!
 
 
 ## 🛠 Preparation
