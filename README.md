@@ -184,7 +184,7 @@ FramePack-U is now available for the following models:
 
 ## 🎯 Supported Sampling Strategies
 - ReDi (Relevance+Diversity): `redi`, our FramePack-U method.
-- Bi-tree: `uniform`, a query-agnostic alternative sampling strategy by binary-tree midpoint ordering, see [our paper]() for details.
+- Bi-tree: `uniform`, a query-agnostic alternative sampling strategy by binary-tree midpoint ordering, see [our paper](https://zeld0n.github.io/framepack-U/assets/paper.pdf) for details.
 
 
 ## 🙏 Acknowledgement
@@ -197,7 +197,7 @@ Thanks for these amazing works!
 FramePack-U is released under the [Apache License 2.0](LICENSE).
 
 ## 📚 Citation
-If you find this work helpful, please feel free to cite our paper:
+If you find this work helpful, please consider citing our paper:
 ```bibtex
 @inproceedings{gao2026elephant,
   title = {Elephant in the Fridge: Constant-Memory Frame Packing for Long Video Understanding},
