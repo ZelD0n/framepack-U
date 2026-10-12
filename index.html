@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8fafc">
+  <meta name="description" content="FramePack-U: training-free, constant-memory frame packing for long video understanding. Official project page with methods, benchmarks, and qualitative examples.">
+  <meta property="og:title" content="Elephant in the Fridge · FramePack-U">
+  <meta property="og:description" content="Constant-Memory Frame Packing for Long Video Understanding · NeurIPS 2026">
+  <meta property="og:image" content="assets/logo.webp">
+  <title>FramePack-U | Elephant in the Fridge</title>
+  <link rel="icon" href="assets/favicon.svg?v=elephant-emoji" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/Lato-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Lato-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=20261012-plain-venue">
+  <script src="app.js?v=20261009-scroll-nav" defer></script>
+</head>
+<body>
+<svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <symbol id="i-paper" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h6"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18"/></symbol>
+  <symbol id="i-data" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V3H3v13h5"/></symbol>
+  <symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7M9 4l3 3 3-3M9 20l3-3 3 3M3.5 10l4-1-1-4m14 9-4 1 1 4M3.5 14l4 1-1 4m14-9-4-1 1-4"/></symbol>
+</svg>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="#" aria-label="FramePack-U home"><img src="assets/web_logo.png" width="2172" height="724" alt="FramePack-U"></a>
+    <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#method">Method</a><a href="#performance">Results</a><a href="#visualizations">Visualizations</a><a href="#discussion">Discussion</a><a href="#citation">Citation</a></nav>
+  </div>
+</header>
+<main id="main">
+  <section class="hero container" aria-labelledby="paper-title">
+    <img src="assets/elephant.webp" class="hero-illustration" width="1265" height="672" alt="An elephant in a refrigerator with a filmstrip">
+    <h1 id="paper-title">Elephant in the Fridge: Constant-Memory Frame Packing for Long Video Understanding</h1>
+    <div class="authors">
+      <div><a href="https://zeld0n.github.io/shuo_homepage" target="_blank" rel="noopener noreferrer">Shuo Gao</a><span>Renmin University of China</span></div>
+      <div><a href="https://hellomuffin.github.io/" target="_blank" rel="noopener noreferrer">Chenhao Zheng</a><span>University of Washington</span></div>
+      <div><a href="https://jason718.github.io/" target="_blank" rel="noopener noreferrer">Zhongzheng Ren</a><span>UNC Chapel Hill</span></div>
+    </div>
+    <p class="venue">NeurIPS 2026</p>
+    <div class="hero-links">
+      <a class="button" href="assets/paper.pdf" target="_blank" rel="noopener"><img class="button-icon monochrome" src="assets/icons/arxiv.svg" alt="" width="24" height="24">arXiv</a>
+      <a class="button" href="assets/paper.pdf" target="_blank" rel="noopener"><img class="button-icon monochrome" src="assets/icons/file-pdf.svg" alt="" width="22" height="24">Paper</a>
+      <a class="button" href="https://github.com/ZelD0n/framepack-U/tree/release/v1.0" target="_blank" rel="noopener noreferrer"><img class="button-icon monochrome" src="assets/icons/github.svg" alt="" width="24" height="24">Code</a>
+      <a class="button" href="https://huggingface.co/datasets/ZelD0n/FramePack-U" target="_blank" rel="noopener noreferrer"><img class="button-icon" src="assets/icons/huggingface.svg" alt="" width="24" height="24">Hugging Face</a>
+      <a class="button" href="https://www.modelscope.cn/datasets/ZelD0n/FramePack-U" target="_blank" rel="noopener noreferrer"><img class="button-icon monochrome" src="assets/icons/modelscope.svg" alt="" width="24" height="24">ModelScope</a>
+    </div>
+  </section>
+
+  <section id="overview" class="section container">
+    <h2>Abstract</h2>
+    <p class="abstract-text">Hour-long videos, streaming feeds, and movie-length content are pushing vision-language models (VLMs) past their breaking point—the standard recipe of encoding each frame into visual tokens yields sequences that grow linearly with video length, causing prohibitive memory consumption and inference latency. Existing approaches, such as token reduction and keyframe selection, attempt to shorten the token sequence but leave the O(n) scaling intact, failing to resolve the fundamental bottleneck. We propose FramePack-U, a strikingly simple, training-free frame packing framework that compresses arbitrarily long videos into a fixed-size visual representation at constant memory cost. FramePack-U requires no fine-tuning or architectural modification — it plugs directly into off-the-shelf VLMs at inference time, yet consistently surpasses more elaborate baselines. Drawing inspiration from FramePack in generation literature, we propose a new content-aware compression strategy that operates under a fixed token budget for visual understanding. Specifically, FramePack-U proceeds in two steps: (1) scoring each frame by its semantic similarity to the text prompt and ranking frames in a diversity-driven manner, and (2) packing the selected frames at varying resolutions into a fixed-length context window. This design concentrates the memory budget on frames that are both instruction-relevant and visually diverse. While in theory FramePack-U can pack arbitrarily many frames into the fixed budget, we identify an empirical instantiation that generalizes robustly across different settings. Extensive experiments on LongVideoBench, MLVU, and Video-MME show that FramePack-U consistently outperforms full-resolution baselines as well as prior token reduction and keyframe selection methods, across diverse model families, parameter scales, and frame budgets. Notably, on Qwen3.5-35B-A3B with a 128-frame budget, FramePack-U yields gains of +12.9%, +10.6%, and +9.7% over the official model on the three benchmarks, respectively.</p>
+  </section>
+
+  <section id="method" class="section section-tinted">
+    <div class="container"><h2>Method</h2><p class="section-intro">FramePack-U is a training-free frame compression and packing method that assigns heterogeneous spatial resolutions under a fixed visual token budget. It operates in two steps: relevance- and diversity-aware sampling ranks frames by instruction relevance and visual diversity; hierarchical resolution packing preserves top-ranked frames at finer resolutions while progressively downsampling lower-ranked frames. This concentrates the memory budget on diverse, instruction-relevant evidence and plugs directly into off-the-shelf VLMs without fine-tuning or architectural modification.</p>
+      <figure class="figure-card"><button class="figure-open" data-image="assets/framework.webp" data-caption="Overview of FramePack-U: relevance- and diversity-aware sampling followed by hierarchical resolution packing." aria-label="Enlarge the method overview"><img src="assets/framework.webp" width="2048" height="1050" alt="FramePack-U framework: CLIP query relevance scoring, diversity-aware greedy sampling, frame ranking, and hierarchical resolution packing before VLM inference" loading="lazy"><span class="expand-badge"><svg><use href="#i-expand"/></svg>Enlarge</span></button><figcaption><strong>Method overview.</strong> Relevance identifies useful evidence; diversity avoids redundant frames; hierarchical packing allocates spatial detail under a fixed budget.</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="performance" class="section container">
+    <h2>Results</h2><p class="section-intro">Across LongVideoBench, MLVU, and Video-MME, FramePack-U consistently outperforms training-free compression baselines on both Qwen backbones under the same visual memory budgets. Our top results are competitive with, and often surpass, those of much larger proprietary VLMs.</p>
+    <div class="results-controls"><label>Backbone<select id="model-select"><option value="dense">Qwen3.6-27B</option><option value="moe">Qwen3.5-35B-A3B</option></select></label><fieldset><legend>Memory budget</legend><div class="segmented budget-options"><button type="button" data-budget="128" aria-pressed="true">128 frames</button><button type="button" data-budget="256" aria-pressed="false">256 frames</button><button type="button" data-budget="512" aria-pressed="false">512 frames</button></div></fieldset></div>
+    <div class="table-wrap"><table aria-label="Main benchmark results, Table 1"><thead><tr><th scope="col">Method</th><th scope="col">LongVideoBench</th><th scope="col">MLVU</th><th scope="col">Video-MME</th></tr></thead><tbody id="proprietary-results"></tbody><tbody id="results-body"></tbody></table></div>
+    <div class="runtime-heading"><h3>Runtime Analysis</h3><p>We evaluate preprocessing, VLM inference, and overall memory and latency across video durations on LongVideoBench, using Qwen3.5-9B with 1 FPS candidate frames on a single NVIDIA A800.</p></div>
+    <div class="runtime-grid"><figure class="figure-card" aria-labelledby="memory-title"><h4 class="runtime-figure-title" id="memory-title">Memory Overhead</h4><button class="figure-open" data-image="assets/memory.webp" data-caption="Memory overhead on Qwen3.5-9B across video-duration groups (Figure 5)." aria-label="Enlarge memory overhead plot"><img src="assets/memory.webp" alt="Memory overhead by video duration for preprocessing, VLM inference, and the overall pipeline" loading="lazy"><span class="expand-badge"><svg><use href="#i-expand"/></svg></span></button></figure><figure class="figure-card" aria-labelledby="latency-title"><h4 class="runtime-figure-title" id="latency-title">Inference Latency</h4><button class="figure-open" data-image="assets/latency.webp" data-caption="Latency on Qwen3.5-9B across video-duration groups (Figure 6)." aria-label="Enlarge latency plot"><img src="assets/latency.webp" alt="Preprocessing, VLM inference, and overall latency across video-duration groups" loading="lazy"><span class="expand-badge"><svg><use href="#i-expand"/></svg></span></button></figure></div>
+    <p class="small-note">Fixed visual tokens do not eliminate video decoding and frame-scoring costs. End-to-end latency also depends on candidate-frame loading and the backbone; see the paper for the full runtime analysis.</p>
+  </section>
+
+  <section id="visualizations" class="section container">
+    <h2>Qualitative Results</h2>
+    <p class="section-intro">Relevance-only sampling often selects redundant frames, while uniform sampling may miss question-relevant evidence. FramePack-U combines prompt relevance and visual diversity to retain key evidence with broader temporal coverage.</p>
+    <div class="case-list">
+      <figure class="case-item quality-slide">
+            <button class="figure-open" data-image="assets/quality-phone.webp?v=full-query-answer" data-caption="Figure 3. What did the white-haired man do after receiving the phone call?" aria-label="Enlarge after the phone call example"><img src="assets/quality-phone.webp?v=full-query-answer" alt="Relevance-only, uniform, and FramePack-U sampling comparison: after the phone call" loading="lazy" draggable="false"><span class="expand-badge"><svg><use href="#i-expand"/></svg></span></button>
+          </figure>
+      <figure class="case-item quality-slide">
+            <button class="figure-open" data-image="assets/quality-opening.webp?v=full-query-answer" data-caption="Figure 3. What environment does the video start in?" aria-label="Enlarge the opening scene example"><img src="assets/quality-opening.webp?v=full-query-answer" alt="Relevance-only, uniform, and FramePack-U sampling comparison: the opening scene" loading="lazy" draggable="false"><span class="expand-badge"><svg><use href="#i-expand"/></svg></span></button>
+          </figure>
+    </div>
+    <div id="tsne" class="visualization-heading"><h2>t-SNE Visualization</h2><p class="section-intro">Under the same 128-frame memory budget, FramePack-U packs 848 frames for denser feature-space coverage, prioritizing query-relevant evidence at higher resolution. Uniform sampling retains 128 full-resolution frames.</p></div>
+    <div class="case-list">
+      <figure class="case-item tsne-slide">
+            <button class="figure-open" data-image="assets/tsne-4.webp" data-caption="t-SNE: Animal in the snow. FramePack-U (848 frames) and uniform sampling (128 frames), at equal memory." aria-label="Enlarge animal in the snow t-SNE"><img src="assets/tsne-4.webp" alt="t-SNE comparison for animal in the snow: FramePack-U and uniform sampling at equal memory" loading="lazy" draggable="false"><span class="expand-badge"><svg><use href="#i-expand"/></svg></span></button>
+          </figure>
+      <figure class="case-item tsne-slide">
+            <button class="figure-open" data-image="assets/tsne-6.webp" data-caption="t-SNE: Clothing color. FramePack-U (848 frames) and uniform sampling (128 frames), at equal memory." aria-label="Enlarge clothing color t-SNE"><img src="assets/tsne-6.webp" alt="t-SNE comparison for clothing color: FramePack-U and uniform sampling at equal memory" loading="lazy" draggable="false"><span class="expand-badge"><svg><use href="#i-expand"/></svg></span></button>
+          </figure>
+      <figure class="case-item tsne-slide">
+            <button class="figure-open" data-image="assets/tsne-9.webp" data-caption="t-SNE: Soldiers in the scene. FramePack-U (848 frames) and uniform sampling (128 frames), at equal memory." aria-label="Enlarge soldiers in the scene t-SNE"><img src="assets/tsne-9.webp" alt="t-SNE comparison for soldiers in the scene: FramePack-U and uniform sampling at equal memory" loading="lazy" draggable="false"><span class="expand-badge"><svg><use href="#i-expand"/></svg></span></button>
+          </figure>
+    </div>
+  </section>
+
+  <section id="discussion" class="section container">
+    <h2>Limitation &amp; Discussion</h2>
+    <div class="discussion-text">
+      <p><strong>Model capacity.</strong> Smaller VLMs may struggle to integrate the additional visual context, leading to unstable gains under larger memory budgets. More frames can introduce distraction rather than useful evidence.</p>
+      <p><strong>Architecture compatibility.</strong> FramePack-U naturally fits VLMs that process frames independently. Grid-based or jointly encoded video inputs may require changes to the visual encoder and preprocessing pipeline.</p>
+      <p><strong>Relevance and diversity scoring.</strong> CLIP may miss fine-grained temporal events and reasoning-heavy cues, while visual similarity may not fully capture semantic complementarity. Stronger, temporally aware scoring is a promising direction.</p>
+      <p><strong>Packing scheme selection.</strong> The best balance between temporal coverage and spatial fidelity varies across models, tasks, and video domains. Automatically adapting the scheme to video length, query type, and model capacity could improve robustness.</p>
+    </div>
+  </section>
+
+  <section id="citation" class="section container citation-section"><h2>Citation</h2><p class="section-intro">If you find FramePack-U useful in your research, please consider citing our paper. 🫶</p><div class="bibtex-card"><button id="copy-citation" class="copy-citation" type="button" aria-label="Copy citation" title="Copy citation"><svg aria-hidden="true"><use href="#i-copy"/></svg></button><pre><code id="bibtex">@inproceedings{gao2026elephant,
+    title = {Elephant in the Fridge: Constant-Memory Frame Packing for Long Video Understanding},
+    author = {Gao, Shuo and Zheng, Chenhao and Ren, Zhongzheng},
+    booktitle = {Neural Information Processing Systems (NeurIPS)},
+    year = {2026}
+}</code></pre></div></section>
+</main>
+<button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top" title="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg></button>
+<dialog id="figure-dialog" aria-labelledby="dialog-caption"><div class="dialog-toolbar"><span>Figure preview</span><button id="dialog-close" type="button" aria-label="Close figure preview">×</button></div><div class="dialog-image-wrap"><img id="dialog-image" alt=""></div><p id="dialog-caption"></p><a id="dialog-original" target="_blank" rel="noopener">Open full-size image <svg><use href="#i-arrow"/></svg></a></dialog>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "name": "framepack-u-project-page",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Project page for Elephant in the Fridge / FramePack-U",
+  "scripts": { "dev": "python3 -m http.server 5173 --bind 127.0.0.1", "start": "python3 -m http.server 5173 --bind 127.0.0.1" }
+}
