@@ -28,6 +28,8 @@
 - [News](#-news)
 - [Preparation](#-preparation)
   - [Environment](#environment)
+  - [Dataset downloads](#dataset-downloads)
+  - [Model downloads](#model-downloads)
   - [Local model and benchmark paths](#local-model-and-benchmark-paths)
   - [Offline data](#offline-data)
 - [Offline Storage](#-offline-storage)
@@ -47,7 +49,7 @@
 
 ## 🛠 Preparation
 
-After cloning the repo, install the environment and link your existing models and benchmark data to the local paths below.
+After cloning the repo, install the environment, download the models and benchmark data, and link them to the local paths below.
 
 ### Environment
 
@@ -82,6 +84,31 @@ and install it locally:
 python -m pip install --no-index --no-deps \
   /path/to/flash_attn-2.8.3+cu128torch2.10-cp310-cp310-linux_x86_64.whl
 ```
+
+### Dataset downloads
+
+Download the benchmark videos and annotations from the following repositories.
+Extract any archives according to the dataset instructions before linking the
+prepared directories in [Local model and benchmark paths](#local-model-and-benchmark-paths).
+
+| Dataset | Download |
+| --- | --- |
+| LongVideoBench | [Hugging Face](https://huggingface.co/datasets/longvideobench/LongVideoBench) |
+| Video-MME | [Hugging Face](https://huggingface.co/datasets/lmms-eval/Video-MME) |
+| MLVU | [Hugging Face](https://huggingface.co/datasets/MLVU/MVLU) |
+
+### Model downloads
+
+Download the checkpoint for the model you want to evaluate. CLIP is needed only
+when generating the offline scores and features locally (see [tools/README.md](tools/README.md)).
+
+| Model | Usage | Download |
+| --- | --- | --- |
+| Qwen3.5-4B | Default for `qwen3_5` | [Hugging Face](https://huggingface.co/Qwen/Qwen3.5-4B) |
+| Qwen3.5-9B | `qwen3_5` with `MODEL_SIZE=9B` | [Hugging Face](https://huggingface.co/Qwen/Qwen3.5-9B) |
+| Qwen3.5-35B-A3B | Default for `qwen3_5_moe` | [Hugging Face](https://huggingface.co/Qwen/Qwen3.5-35B-A3B) |
+| Qwen3.6-27B | Default for `qwen3_6` | [Hugging Face](https://huggingface.co/Qwen/Qwen3.6-27B) |
+| CLIP ViT-B/32 | Offline score and feature generation | [Hugging Face](https://huggingface.co/openai/clip-vit-base-patch32) |
 
 ### Local model and benchmark paths
 Link your existing model weights and prepared benchmark directories once. The
