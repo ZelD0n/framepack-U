@@ -13,7 +13,7 @@
 </p>
 <p align="center">
 <a href="https://zeld0n.github.io/framepack-U/"><img src="https://img.shields.io/badge/Homepage-FramePackU-green?logo=googlechrome&logoColor=white" alt="Homepage"></a>
-<a href="https://github.com/ZelD0n/framepack-U"><img src="https://img.shields.io/badge/arXiv-FramePackU-red?logo=arxiv" alt="GitHub"></a>
+<a href="https://arxiv.org/abs/2610.16118"><img src="https://img.shields.io/badge/arXiv-FramePackU-red?logo=arxiv" alt="GitHub"></a>
 <a href="https://github.com/ZelD0n/framepack-U"><img src="https://img.shields.io/badge/GitHub-FramePackU-blue?logo=github" alt="GitHub"></a>
 <a href="https://huggingface.co/datasets/ZelD0n/FramePack-U"><img src="https://img.shields.io/badge/HuggingFace-FramePackU-yellow?logo=huggingface" alt="Hugging Face"></a>
 <a href="https://www.modelscope.cn/datasets/ZelD0n/FramePack-U"><img src="https://img.shields.io/badge/ModelScope-FramePackU-purple?logo=modelscope" alt="ModelScope"></a>
